@@ -1,0 +1,18 @@
+src/RadixSorter.cc: In member function ‘void RadixSorter::sequentialMSD(std::vector<std::reference_wrapper<std::vector<unsigned int> > >&)’:
+src/RadixSorter.cc:11:67: warning: unused parameter ‘lists’ [-Wunused-parameter]
+   11 |   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists)
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+src/RadixSorter.cc: In member function ‘void RadixSorter::embarrassinglyParallelMSD(std::vector<std::reference_wrapper<std::vector<unsigned int> > >&, unsigned int)’:
+src/RadixSorter.cc:17:67: warning: unused parameter ‘lists’ [-Wunused-parameter]
+   17 |   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+src/RadixSorter.cc:18:22: warning: unused parameter ‘cores’ [-Wunused-parameter]
+   18 |   const unsigned int cores)
+      |   ~~~~~~~~~~~~~~~~~~~^~~~~
+src/RadixSorter.cc: In member function ‘void RadixSorter::trulyParallelMSD(std::vector<std::reference_wrapper<std::vector<unsigned int> > >&, unsigned int)’:
+src/RadixSorter.cc:24:67: warning: unused parameter ‘lists’ [-Wunused-parameter]
+   24 |   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+src/RadixSorter.cc:25:16: warning: unused parameter ‘cores’ [-Wunused-parameter]
+   25 |   unsigned int cores)
+      |   ~~~~~~~~~~~~~^~~~~
