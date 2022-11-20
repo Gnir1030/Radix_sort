@@ -12,14 +12,14 @@
 int get_max_exp(std::vector<unsigned int> arr)
 {
     // Stores the maximum element
-    int mx = arr[0];
+    int mx = arr.front();
 
     // Traverse the given array
-    for (int i = 1; i < arr.size(); i++) {
+    for (auto i : arr) {
 
         // Update the value of maximum
-        if (arr[i] > mx) {
-            mx = arr[i];
+        if (i > mx) {
+            mx = i;
         }
     }
 
@@ -34,17 +34,17 @@ int get_max_exp(std::vector<unsigned int> arr)
     return exp;
 }
 
-void msd_sort(struct node* root, int exp,
-    std::vector<unsigned int>& sorted_arr, int line)
+void msd_sort(struct node* root, unsigned int exp,
+    std::vector<unsigned int>& sorted_arr, unsigned int line)
 {
     if (exp <= 0) {
         return;
     }
-    int j;
+    unsigned int j;
     // Stores the numbers in different
     // buckets according their MSD
     for (int i = 0;
-        i < root->arr.size();
+        i < static_cast<int>(root->arr.size());
         i++) {
 
         // Get the MSD in j
@@ -96,7 +96,6 @@ void msd_sort(struct node* root, int exp,
 void RadixSorter::sequentialMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists)
 { 
-  int size = lists.size();
   for(auto i : lists){
     struct node* root = new_node();
     root->arr = i.get();
