@@ -47,12 +47,12 @@ void msd_sort(struct node* root, int exp,
 
         // Get the MSD in j
         j = i;
-
+        std::cerr << j << std::endl;
         while (j < line) {
             j *= 10;
         }
         j = (j / exp) % 10;
-std::cerr << j << " ";
+        std::cerr << j << std::endl;
         // If j-th index in the node
         // array is empty create and
         // link a new node in index
