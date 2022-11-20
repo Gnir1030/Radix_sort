@@ -6,6 +6,7 @@
  */
 
 #include "radix.h"
+#include <iostream>
 
 // Function to calculate the MSD of the
 // maximum  value in the array
@@ -92,6 +93,15 @@ void msd_sort(struct node* root, unsigned int exp,
     }
 }
 
+// Function to print an array
+void printa(std::vector<unsigned int> arr)
+{
+    for (auto i : arr)
+        std::cerr << i << " ";
+
+    std::cerr << std::endl;
+}
+
 void RadixSorter::sequentialMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists)
 { 
@@ -102,6 +112,7 @@ void RadixSorter::sequentialMSD(
     std::vector<unsigned int> sorted_arr;
     msd_sort(root, exp, sorted_arr, exp);
     i.get() = sorted_arr;
+    printa(sorted_arr);
   }
 
 }
