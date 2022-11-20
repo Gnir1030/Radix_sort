@@ -40,7 +40,7 @@ void msd_sort(struct node* root, unsigned int exp,
     if (exp <= 0) {
         return;
     }
-    __int64 j;
+   __int64_t j;
     // Stores the numbers in different
     // buckets according their MSD
     for (auto i : root->arr) {
