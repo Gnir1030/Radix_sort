@@ -34,8 +34,8 @@ unsigned int get_max_exp(std::vector<unsigned int> arr)
     return exp;
 }
 
-void msd_sort(struct node* root, unsigned int exp,
-    std::vector<unsigned int>& sorted_arr, unsigned int line)
+void msd_sort(struct node* root, int exp,
+    std::vector<unsigned int>& sorted_arr, int line)
 {
     if (exp <= 0) {
         return;
@@ -52,7 +52,7 @@ void msd_sort(struct node* root, unsigned int exp,
             j *= 10;
         }
         j = (j / exp) % 10;
-
+std::cerr << j << " ";
         // If j-th index in the node
         // array is empty create and
         // link a new node in index
