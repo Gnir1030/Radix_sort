@@ -12,7 +12,7 @@
 int get_max_exp(std::vector<unsigned int> arr)
 {
     // Stores the maximum element
-    int mx = arr.front();
+    unsigned int mx = arr.front();
 
     // Traverse the given array
     for (auto i : arr) {
