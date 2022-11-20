@@ -23,7 +23,7 @@ unsigned int get_max_exp(std::vector<unsigned int> arr)
         }
     }
 
-    int exp = 1;
+    unsigned int exp = 1;
 
     while (mx > 10) {
         mx /= 10;
@@ -40,15 +40,13 @@ void msd_sort(struct node* root, unsigned int exp,
     if (exp <= 0) {
         return;
     }
-    unsigned int j;
+    __int64 j;
     // Stores the numbers in different
     // buckets according their MSD
-    for (int i = 0;
-        i < static_cast<int>(root->arr.size());
-        i++) {
+    for (auto i : root->arr) {
 
         // Get the MSD in j
-        j = root->arr[i];
+        j = i;
 
         while (j < line) {
             j *= 10;
@@ -63,8 +61,7 @@ void msd_sort(struct node* root, unsigned int exp,
         }
 
         // Store the number in j-th node
-        root->nxt[j]->arr.push_back(
-            root->arr[i]); 
+        root->nxt[j]->arr.push_back(i); 
     }
 
     // Sort again every child node that
