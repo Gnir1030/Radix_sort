@@ -10,7 +10,7 @@
 
 // Function to calculate the MSD of the
 // maximum  value in the array
-int get_max_exp(std::vector<unsigned int> arr)
+unsigned int get_max_exp(std::vector<unsigned int> arr)
 {
     // Stores the maximum element
     unsigned int mx = arr.front();
@@ -107,12 +107,11 @@ void RadixSorter::sequentialMSD(
 { 
   for(auto i : lists){
     struct node* root = new_node();
-    root->arr = i.get();
-    int exp = get_max_exp(root->arr);
+    root->arr = i;
+    unsigned int exp = get_max_exp(root->arr);
     std::vector<unsigned int> sorted_arr;
     msd_sort(root, exp, sorted_arr, exp);
-    i.get() = sorted_arr;
-    printa(sorted_arr);
+    i = sorted_arr;
   }
 
 }
