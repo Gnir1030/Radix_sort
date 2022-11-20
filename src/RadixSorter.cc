@@ -109,7 +109,7 @@ void RadixSorter::sequentialMSD(
     std::vector<unsigned int> sorted_arr;
     msd_sort(root, exp, sorted_arr, exp);
     i = sorted_arr;
-    printa(sorted_arr);
+    printa(i);
   }
 
 }
