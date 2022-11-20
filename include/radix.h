@@ -28,6 +28,23 @@
  * a bucket sort where each bucket is sorted in a different thread will almost 
  * certainly deliver the best results.
  */
+struct node {
+    std::vector<unsigned int> arr;
+    struct node* nxt[10];
+};
+
+struct node* new_node(void)
+{
+    struct node* tempNode = new node;
+
+    for (int i = 0; i < 10; i++) {
+        tempNode->nxt[i] = NULL;
+    }
+
+    // Return the created node
+    return tempNode;
+}
+
 class RadixSorter {
 public:
   /*
@@ -65,4 +82,6 @@ public:
   void trulyParallelMSD(
     std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
     const unsigned int cores);
+private:
+
 };
