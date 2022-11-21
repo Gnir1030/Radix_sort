@@ -121,11 +121,13 @@ void RadixSorter::embarrassinglyParallelMSD(
             msd_sort(root, exp, sorted_arr, exp);
             i.get() = sorted_arr;
             //for(auto i : lists){
-                print(i);
+                print(lists[0]);
                 std::cout << std::endl;
            // }
         }));
     }
+
+
 
     for(auto j = parallel.begin(); j != parallel.end(); j++ ){
         (*j).join();
