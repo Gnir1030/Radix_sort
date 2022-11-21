@@ -28,9 +28,11 @@
  * a bucket sort where each bucket is sorted in a different thread will almost 
  * certainly deliver the best results.
  */
+
+/*Cited*/
 struct node {
-    std::vector<unsigned int> arr;
-    struct node* nxt[10];
+    std::vector<unsigned int> arr; //base array
+    struct node* nxt[10]; //bucket
 };
 
 struct node* new_node(void)
@@ -44,6 +46,7 @@ struct node* new_node(void)
     // Return the created node
     return tempNode;
 }
+// 
 
 class RadixSorter {
 public:

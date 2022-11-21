@@ -18,7 +18,7 @@ int get_max_exp(std::vector<unsigned int> arr)
     unsigned int mx = arr.front();
     // Traverse the given array
     for (auto i : arr) {
-        // Update the value of maximu
+        // Update the value of maximum
         mx = i > mx ? i : mx;
     }
 
@@ -32,8 +32,7 @@ int get_max_exp(std::vector<unsigned int> arr)
     return exp;
 }
 
-void msd_sort(struct node* root, int exp,
-    std::vector<unsigned int>& sorted_arr, int line)
+void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr, int line)
 {
     int64_t j;
     // Stores the numbers in different
@@ -76,7 +75,7 @@ void msd_sort(struct node* root, int exp,
             // one number then it means
             // the number is sorted
         else {
-            sorted_arr.push_back(root->nxt[i]->arr[0]);
+            sorted_arr.push_back(root->nxt[i]->arr.front());
         }
     }
 }
@@ -110,7 +109,6 @@ void RadixSorter::embarrassinglyParallelMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
   const unsigned int cores)
 {
-    /*
     std::mutex m;
     std::vector<std::thread> parallel;
     for(auto i : lists){
@@ -129,7 +127,7 @@ void RadixSorter::embarrassinglyParallelMSD(
     for(auto j = parallel.begin(); j != parallel.end(); j++ ){
         (*j).join();
     }
-    */
+/*
    std::thread t1([&]{
         struct node* root = new_node();
         root->arr = lists[0].get();
@@ -150,6 +148,7 @@ void RadixSorter::embarrassinglyParallelMSD(
 
    t1.join();
    t2.join();
+   */
 }
 
 void RadixSorter::trulyParallelMSD(
