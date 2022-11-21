@@ -101,7 +101,7 @@ void RadixSorter::sequentialMSD(
     unsigned int exp = get_max_exp(root->arr);
     std::vector<unsigned int> sorted_arr;
     msd_sort(root, exp, sorted_arr, exp);
-    i = sorted_arr;
+    i.get() = sorted_arr;
     //print(i);
   }
 }
