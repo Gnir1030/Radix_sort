@@ -33,9 +33,6 @@ int get_max_exp(std::vector<unsigned int> arr)
 void msd_sort(struct node* root, int exp,
     std::vector<unsigned int>& sorted_arr, int line)
 {
-    if (exp <= 0) {
-        return;
-    }
     int64_t j;
     // Stores the numbers in different
     // buckets according their MSD
