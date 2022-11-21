@@ -17,9 +17,13 @@ int get_max_exp(std::vector<unsigned int> arr)
     // Traverse the given array
     for (auto i : arr) {
         // Update the value of maximum
+        /*
         if (i > mx) {
             mx = i;
         }
+        */
+
+        mx = i > mx ? i : mx;
     }
 
     int exp = 1;
