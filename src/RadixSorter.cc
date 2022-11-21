@@ -154,6 +154,7 @@ void RadixSorter::embarrassinglyParallelMSD(
         for(auto& k : parallel){
             k.join();
         }
+        std::cerr << i << std::endl;
    }
 }
 
