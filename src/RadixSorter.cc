@@ -78,13 +78,6 @@ void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr,
             sorted_arr.push_back(root->nxt[i]->arr.front());
         }
     }
-
-   for (int i = 0; i < 10; i++) {
-        if (root->nxt[i] != NULL) {
-            delete root->nxt[i];
-        }
-   }
-
 }
 
 /*
@@ -111,7 +104,6 @@ void RadixSorter::sequentialMSD(
     msd_sort(root, exp, sorted_arr, exp);
     i.get() = sorted_arr;
     //print(i);
-    delete root;
   }
 }
     
