@@ -110,6 +110,7 @@ void RadixSorter::embarrassinglyParallelMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
   const unsigned int cores)
 {
+    int q = cores;
     std::mutex m;
     std::vector<std::thread> parallel;
     for(auto& i : lists){
@@ -165,4 +166,5 @@ void RadixSorter::trulyParallelMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
   unsigned int cores) 
 { 
+    std::vector<unsigned int> o = lists[cores];
 }
