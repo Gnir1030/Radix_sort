@@ -119,13 +119,9 @@ void RadixSorter::embarrassinglyParallelMSD(
             unsigned int exp = get_max_exp(root->arr);
             std::vector<unsigned int> sorted_arr;
             msd_sort(root, exp, sorted_arr, exp);
-            m.lock();
             i.get() = sorted_arr;
             print(lists[0]);
             std::cout << std::endl;
-            m.unlock();
-            //for(auto i : lists){
-           // }
         }));
     }
 
