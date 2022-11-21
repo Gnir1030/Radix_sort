@@ -97,11 +97,11 @@ void RadixSorter::sequentialMSD(
 { 
   for(auto& i : lists){
     struct node* root = new_node();
-    root->arr = i.get();
+    root->arr = i;
     unsigned int exp = get_max_exp(root->arr);
     std::vector<unsigned int> sorted_arr;
     msd_sort(root, exp, sorted_arr, exp);
-    i.get() = sorted_arr;
+    i = sorted_arr;
     //print(i);
   }
 }
