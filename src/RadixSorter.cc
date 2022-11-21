@@ -132,7 +132,6 @@ void RadixSorter::embarrassinglyParallelMSD(
    int size = lists.size();
    int i = 0;
    //std::mutex m;
-   std::cerr << size << std::endl;
    while(i < size){
         std::vector<std::thread> parallel;
         for(unsigned j = 0; j < cores; j++){
@@ -155,7 +154,8 @@ void RadixSorter::embarrassinglyParallelMSD(
         for(auto& k : parallel){
             k.join();
         }
-        //std::cerr << i << std::endl;
+
+        std::cerr << parallel.size() << std::endl;
    }
 }
 
