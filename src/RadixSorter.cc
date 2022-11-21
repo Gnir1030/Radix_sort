@@ -79,16 +79,16 @@ void msd_sort(struct node* root, int exp,
     }
 }
 
-/*
+
 // Function to print an array
-void printa(std::vector<unsigned int> arr)
+void print(std::vector<unsigned int> arr)
 {
     for (auto i : arr)
-        std::cerr << i << " ";
+        std::cerr << i << std::endl;
 
-    std::cerr << std::endl;
+    //std::cerr << std::endl;
 }
-*/
+
 
 void RadixSorter::sequentialMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists)
@@ -100,6 +100,7 @@ void RadixSorter::sequentialMSD(
     std::vector<unsigned int> sorted_arr;
     msd_sort(root, exp, sorted_arr, exp);
     i.get() = sorted_arr;
+    print(i);
   }
 }
     
