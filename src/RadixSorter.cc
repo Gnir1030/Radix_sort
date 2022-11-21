@@ -8,6 +8,7 @@
 #include "radix.h"
 #include <iostream>
 #include <thread>
+#include <mutex>
 
 // Function to calculate the MSD of the
 // maximum  value in the array
@@ -109,6 +110,7 @@ void RadixSorter::embarrassinglyParallelMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
   const unsigned int cores)
 {
+    std::mutex m;
     std::vector<std::thread> parallel;
     for(auto i : lists){
         parallel.push_back(std::thread([&]{
@@ -118,8 +120,11 @@ void RadixSorter::embarrassinglyParallelMSD(
             std::vector<unsigned int> sorted_arr;
             msd_sort(root, exp, sorted_arr, exp);
             i.get() = sorted_arr;
-            print(i);
         }));
+    }
+
+    for(auto i : lists){
+        print(i);
     }
 
     for(auto j = parallel.begin(); j != parallel.end(); j++ ){
