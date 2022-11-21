@@ -121,10 +121,10 @@ void RadixSorter::embarrassinglyParallelMSD(
             msd_sort(root, exp, sorted_arr, exp);
             m.lock();
             i.get() = sorted_arr;
+            print(i);
+            std::cout << std::endl;
             m.unlock();
             //for(auto i : lists){
-                print(i);
-                std::cout << std::endl;
            // }
         }));
     }
