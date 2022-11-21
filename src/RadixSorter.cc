@@ -111,6 +111,7 @@ void RadixSorter::sequentialMSD(
     msd_sort(root, exp, sorted_arr, exp);
     i.get() = sorted_arr;
     //print(i);
+    delete root;
   }
 }
     
