@@ -94,7 +94,7 @@ void print(std::vector<unsigned int> arr)
 void RadixSorter::sequentialMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists)
 { 
-  for(auto i : lists){
+  for(auto& i : lists){
     struct node* root = new_node();
     root->arr = i.get();
     unsigned int exp = get_max_exp(root->arr);
