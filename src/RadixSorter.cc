@@ -120,10 +120,10 @@ void RadixSorter::embarrassinglyParallelMSD(
             std::vector<unsigned int> sorted_arr;
             msd_sort(root, exp, sorted_arr, exp);
             i.get() = sorted_arr;
-            for(auto i : lists){
+            //for(auto i : lists){
                 print(i);
                 std::cout << std::endl;
-            }
+           // }
         }));
     }
 
