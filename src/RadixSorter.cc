@@ -123,7 +123,7 @@ void RadixSorter::embarrassinglyParallelMSD(
             i.get() = sorted_arr;
             m.unlock();
             //for(auto i : lists){
-                print(lists[0]);
+                print(i);
                 std::cout << std::endl;
            // }
         }));
