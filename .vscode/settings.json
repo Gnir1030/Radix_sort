@@ -49,6 +49,7 @@
         "xlocnum": "cpp",
         "ratio": "cpp",
         "stop_token": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "mutex": "cpp"
     }
 }
