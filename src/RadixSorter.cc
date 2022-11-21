@@ -111,6 +111,9 @@ void RadixSorter::embarrassinglyParallelMSD(
   const unsigned int cores)
 {
     int q = cores;
+    if(q != cores){
+        return;
+    }
     std::mutex m;
     std::vector<std::thread> parallel;
     for(auto& i : lists){
