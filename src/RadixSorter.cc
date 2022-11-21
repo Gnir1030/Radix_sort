@@ -10,21 +10,19 @@
 
 // Function to calculate the MSD of the
 // maximum  value in the array
-unsigned int get_max_exp(std::vector<unsigned int> arr)
+int get_max_exp(std::vector<unsigned int> arr)
 {
     // Stores the maximum element
     unsigned int mx = arr.front();
     // Traverse the given array
     for (auto i : arr) {
-
         // Update the value of maximum
         if (i > mx) {
             mx = i;
         }
     }
 
-    unsigned int exp = 1;
-
+    int exp = 1;
     while (mx > 10) {
         mx /= 10;
         exp *= 10;
@@ -44,7 +42,6 @@ void msd_sort(struct node* root, int exp,
     // Stores the numbers in different
     // buckets according their MSD
     for (auto i : root->arr) {
-
         // Get the MSD in j
         j = i;
         //std::cerr << j << std::endl;
@@ -70,26 +67,22 @@ void msd_sort(struct node* root, int exp,
 
         // If root->next is NULL
         if (root->nxt[i] != NULL) {
-
             if (root->nxt[i]->arr.size() > 1) {
-
                 // Sort recursively
-                msd_sort(root->nxt[i],
-                    exp / 10,
-                    sorted_arr, line);
+                msd_sort(root->nxt[i], exp / 10, sorted_arr, line);
             }
 
             // If any node have only
             // one number then it means
             // the number is sorted
             else {
-                sorted_arr.push_back(
-                    root->nxt[i]->arr[0]);
+                sorted_arr.push_back(root->nxt[i]->arr[0]);
             }
         }
     }
 }
 
+/*
 // Function to print an array
 void printa(std::vector<unsigned int> arr)
 {
@@ -98,6 +91,7 @@ void printa(std::vector<unsigned int> arr)
 
     std::cerr << std::endl;
 }
+*/
 
 void RadixSorter::sequentialMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists)
@@ -110,7 +104,6 @@ void RadixSorter::sequentialMSD(
     msd_sort(root, exp, sorted_arr, exp);
     i.get() = sorted_arr;
   }
-
 }
     
 void RadixSorter::embarrassinglyParallelMSD(
