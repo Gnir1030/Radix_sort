@@ -78,6 +78,13 @@ void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr,
             sorted_arr.push_back(root->nxt[i]->arr.front());
         }
     }
+
+   for (int i = 0; i < 10; i++) {
+        if (root->nxt[i] != NULL) {
+            delete root->nxt[i];
+        }
+   }
+
 }
 
 /*
@@ -111,7 +118,6 @@ void RadixSorter::embarrassinglyParallelMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
   const unsigned int cores)
 {
-    std::vector<unsigned int> o = lists[cores];
     std::mutex m;
     std::vector<std::thread> parallel;
     for(auto& i : lists){
@@ -167,5 +173,4 @@ void RadixSorter::trulyParallelMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
   unsigned int cores) 
 { 
-    std::vector<unsigned int> o = lists[cores];
 }
