@@ -148,6 +148,7 @@ void RadixSorter::embarrassinglyParallelMSD(
                 msd_sort(root, exp, sorted_arr, exp);
                 lists[i].get() = sorted_arr;
             }));
+            print(lists[i]);
             i++;
         }
         //std::cerr << i << std::endl;
