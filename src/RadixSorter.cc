@@ -16,13 +16,7 @@ int get_max_exp(std::vector<unsigned int> arr)
     unsigned int mx = arr.front();
     // Traverse the given array
     for (auto i : arr) {
-        // Update the value of maximum
-        /*
-        if (i > mx) {
-            mx = i;
-        }
-        */
-
+        // Update the value of maximu
         mx = i > mx ? i : mx;
     }
 
@@ -57,9 +51,9 @@ void msd_sort(struct node* root, int exp,
         // If j-th index in the node
         // array is empty create and
         // link a new node in index
-        if (root->nxt[j] == NULL) {
+        //if (root->nxt[j] == NULL) {
             root->nxt[j] = new_node();
-        }
+        //}
 
         // Store the number in j-th node
         root->nxt[j]->arr.push_back(i); 
