@@ -134,7 +134,7 @@ void RadixSorter::embarrassinglyParallelMSD(
    //std::mutex m;
    std::vector<std::thread> parallel;
    while(i < size){
-        for(auto j = 0; j < cores; j++){
+        for(unsigned j = 0; j < cores; j++){
             if( i >= size){
                 continue;
             }
