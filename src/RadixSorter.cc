@@ -43,9 +43,9 @@ void msd_sort(struct node* root, int exp,
         // Get the MSD in j
         j = i;
         //std::cerr << j << std::endl;
-        //while (j < line) {
+        while (j < line) {
             j *= 10;
-        //}
+        }
         j = (j / exp) % 10;
         //std::cerr << j << std::endl;
         // If j-th index in the node
@@ -64,18 +64,20 @@ void msd_sort(struct node* root, int exp,
     for (int i = 0; i < 10; i++) {
 
         // If root->next is NULL
-        if (root->nxt[i] != NULL) {
-            if (root->nxt[i]->arr.size() > 1) {
-                // Sort recursively
-                msd_sort(root->nxt[i], exp / 10, sorted_arr, line);
-            }
+        if (root->nxt[i] == NULL) {
+            continue;
+        }
+
+        if (root->nxt[i]->arr.size() > 1) {
+            // Sort recursively
+            msd_sort(root->nxt[i], exp / 10, sorted_arr, line);
+        }
 
             // If any node have only
             // one number then it means
             // the number is sorted
-            else {
-                sorted_arr.push_back(root->nxt[i]->arr[0]);
-            }
+        else {
+            sorted_arr.push_back(root->nxt[i]->arr[0]);
         }
     }
 }
