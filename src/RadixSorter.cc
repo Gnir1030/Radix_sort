@@ -122,10 +122,8 @@ void RadixSorter::embarrassinglyParallelMSD(
         }));
     }
 
-
-
-    for(auto j = parallel.begin(); j != parallel.end(); j++ ){
-        (*j).join();
+    for(auto& j : parallel){
+        j.join();
     }
 /*
    std::thread t1([&]{
