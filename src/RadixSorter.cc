@@ -80,7 +80,7 @@ void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr,
     }
 }
 
-
+/*
 // Function to print an array
 void print(std::vector<unsigned int> arr)
 {
@@ -89,6 +89,7 @@ void print(std::vector<unsigned int> arr)
 
     //std::cerr << std::endl;
 }
+*/
 
 
 void RadixSorter::sequentialMSD(
@@ -109,6 +110,7 @@ void RadixSorter::embarrassinglyParallelMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
   const unsigned int cores)
 {
+    /*
     std::mutex m;
     std::vector<std::thread> parallel;
     for(auto& i : lists){
@@ -126,28 +128,30 @@ void RadixSorter::embarrassinglyParallelMSD(
     for(auto& j : parallel){
         j.join();
     }
-/*
-   std::thread t1([&]{
-        struct node* root = new_node();
-        root->arr = lists[0].get();
-        unsigned int exp = get_max_exp(root->arr);
-        std::vector<unsigned int> sorted_arr;
-        msd_sort(root, exp, sorted_arr, exp);
-        lists[0].get() = sorted_arr;
-   });
-
-   std::thread t2([&]{
-        struct node* root = new_node();
-        root->arr = lists[1].get();
-        unsigned int exp = get_max_exp(root->arr);
-        std::vector<unsigned int> sorted_arr;
-        msd_sort(root, exp, sorted_arr, exp);
-        lists[1].get() = sorted_arr;
-   });
-
-   t1.join();
-   t2.join();
-   */
+    */
+   int size = lists.size();
+   int i = 0;
+   //std::mutex m;
+   std::vector<std::thread> parallel;
+   while(i < size){
+        for(int j = 0; j < cores; j++){
+            if( i >= size){
+                continue;
+            }
+            parallel.push_back(std::thread([&]{
+                struct node* root = new_node();
+                root->arr = lists[i].get();
+                unsigned int exp = get_max_exp(root->arr);
+                std::vector<unsigned int> sorted_arr;
+                msd_sort(root, exp, sorted_arr, exp);
+                lists[i].get() = sorted_arr;
+            }));
+            i++;
+        }
+        for(auto& k : parallel){
+            k.join();
+        }
+   }
 }
 
 void RadixSorter::trulyParallelMSD(
