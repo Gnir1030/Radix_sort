@@ -80,7 +80,7 @@ void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr,
     }
 }
 
-/*
+
 // Function to print an array
 void print(std::vector<unsigned int> arr)
 {
@@ -89,7 +89,7 @@ void print(std::vector<unsigned int> arr)
 
     //std::cerr << std::endl;
 }
-*/
+
 
 
 void RadixSorter::sequentialMSD(
@@ -136,7 +136,7 @@ void RadixSorter::embarrassinglyParallelMSD(
    std::cerr << size << std::endl;
    while(i < size){
         for(unsigned j = 0; j < cores; j++){
-            std::cerr << i << std::endl;
+            //std::cerr << i << std::endl;
             if( i >= size){
                 continue;
             }
@@ -148,13 +148,14 @@ void RadixSorter::embarrassinglyParallelMSD(
                 msd_sort(root, exp, sorted_arr, exp);
                 lists[i].get() = sorted_arr;
             }));
+            print(lists[i]);
             i++;
         }
-        std::cerr << i << std::endl;
+        //std::cerr << i << std::endl;
         for(auto& k : parallel){
             k.join();
         }
-        std::cerr << i << std::endl;
+        //std::cerr << i << std::endl;
    }
 }
 
