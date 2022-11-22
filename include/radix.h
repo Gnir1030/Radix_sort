@@ -35,7 +35,7 @@ struct node {
     struct node* nxt[10]; //bucket
 };
 
-struct node* new_node(void)
+node* new_node()
 {
     struct node* tempNode = new node;
 

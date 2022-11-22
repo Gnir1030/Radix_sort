@@ -31,7 +31,7 @@ int maxExp(std::vector<unsigned int> arr)
     return exp;
 } 
 
-void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr, int line)
+void msd_sort(node* root, int exp, std::vector<unsigned int>& sorted_arr, int line)
 {
     int64_t j;
     for (auto i : root->arr) {
@@ -78,7 +78,7 @@ void RadixSorter::sequentialMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists)
 { 
   for(auto& i : lists){
-    struct node* root = new_node();
+    node* root = new_node();
     root->arr = i.get();
     unsigned int exp = maxExp(root->arr);
     std::vector<unsigned int> sorted_arr;
@@ -117,7 +117,7 @@ void RadixSorter::embarrassinglyParallelMSD(
         //std::cerr << i << std::endl;
         parallel.push_back(std::thread([&]{
             for(int i = j; i < size; i = i + cores){
-                struct node* root = new_node();
+                node* root = new_node();
                 root->arr = lists[i].get();
                 unsigned int exp = maxExp(root->arr);
                 std::vector<unsigned int> sorted_arr;
@@ -147,7 +147,7 @@ void RadixSorter::trulyParallelMSD(
         //std::cerr << i << std::endl;
         parallel.push_back(std::thread([&]{
             for(int i = j; i < size; i = i + cores){
-                struct node* root = new_node();
+                node* root = new_node();
                 root->arr = lists[i].get();
                 unsigned int exp = maxExp(root->arr);
                 std::vector<unsigned int> sorted_arr;
