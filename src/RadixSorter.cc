@@ -10,6 +10,23 @@
 #include <thread>
 #include <mutex>
 
+struct node {
+    std::vector<unsigned int> arr; //base array
+    struct node* nxt[10]; //bucket
+};
+
+node* new_node()
+{
+    struct node* tempNode = new node;
+
+    for (int i = 0; i < 10; i++) {
+        tempNode->nxt[i] = NULL;
+    }
+
+    // Return the created node
+    return tempNode;
+}
+
 /*cited*/
 int maxExp(std::vector<unsigned int> arr)
 {
