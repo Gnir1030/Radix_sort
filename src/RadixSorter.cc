@@ -151,11 +151,10 @@ void RadixSorter::embarrassinglyParallelMSD(
             i++;
         }
     std::cerr << parallel.size() << "!" << std::endl;
-        /*
         for(auto& k : parallel){
             k.join();
         }
-        */
+
    }
 
 }
