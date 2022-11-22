@@ -10,6 +10,7 @@
 #include <thread>
 #include <mutex>
 
+/*Node Structure Cited*/
 struct node {
     std::vector<unsigned int> arr; //base array
     struct node* nxt[10]; //bucket
@@ -25,9 +26,9 @@ node* new_node()
 
     // Return the created node
     return tempNode;
-}
+}// https://www.geeksforgeeks.org/msd-most-significant-digit-radix-sort/
 
-/*cited*/
+
 int maxExp(std::vector<unsigned int> arr)
 {
     // Stores the maximum element
@@ -48,6 +49,7 @@ int maxExp(std::vector<unsigned int> arr)
     return exp;
 } 
 
+/*Algorithm cited*/
 void msd_sort(node* root, int exp, std::vector<unsigned int>& sorted_arr, int line)
 {
     int64_t j;
