@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <functional>
+#include <memory>
 
 /*
  * Radix Sorter with support for Most Significant Digit sorting only.
