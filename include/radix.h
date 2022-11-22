@@ -37,14 +37,14 @@ struct node {
 
 struct node* new_node(void)
 {
-    std::unique_ptr<struct node> tempNode = std::make_unique<node> ();
+    struct node* tempNode = new node;
 
     for (int i = 0; i < 10; i++) {
         tempNode->nxt[i] = NULL;
     }
 
     // Return the created node
-    return tempNode.get();
+    return tempNode;
 }
 // https://www.geeksforgeeks.org/msd-most-significant-digit-radix-sort/
 

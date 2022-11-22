@@ -45,8 +45,6 @@ void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr,
         }
         root->nxt[j]->arr.push_back(i); 
     }
-    std::cerr << "!" << std::endl;
-    
     for (int i = 0; i < 10; i++) {
 
         // If root->next is NULL
