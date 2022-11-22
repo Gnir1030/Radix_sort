@@ -20,7 +20,7 @@
 
 #include <vector>
 #include <functional>
-
+#include <memory>
 /*
  * Radix Sorter with support for Most Significant Digit sorting only.
  *
@@ -37,16 +37,16 @@ struct node {
 
 struct node* new_node(void)
 {
-    struct node* tempNode = new node;
+    std::unique_ptr<struct node> tempNode = std::make_unique<node> ();
 
     for (int i = 0; i < 10; i++) {
         tempNode->nxt[i] = NULL;
     }
 
     // Return the created node
-    return tempNode;
+    return tempNode.get();
 }
-// 
+// https://www.geeksforgeeks.org/msd-most-significant-digit-radix-sort/
 
 class RadixSorter {
 public:

@@ -10,9 +10,8 @@
 #include <thread>
 #include <mutex>
 
-// Function to calculate the MSD of the
-// maximum  value in the array
-int get_max_exp(std::vector<unsigned int> arr)
+/*cited*/
+int maxExp(std::vector<unsigned int> arr)
 {
     // Stores the maximum element
     unsigned int mx = arr.front();
@@ -30,35 +29,22 @@ int get_max_exp(std::vector<unsigned int> arr)
 
     // Return the resultant value
     return exp;
-}
+} 
 
 void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr, int line)
 {
     int64_t j;
-    // Stores the numbers in different
-    // buckets according their MSD
     for (auto i : root->arr) {
-        // Get the MSD in j
         j = i;
-        //std::cerr << j << std::endl;
         while (j < line) {
             j *= 10;
         }
         j = (j / exp) % 10;
-        //std::cerr << j << std::endl;
-        // If j-th index in the node
-        // array is empty create and
-        // link a new node in index
         if (root->nxt[j] == NULL) {
             root->nxt[j] = new_node();
         }
-
-        // Store the number in j-th node
         root->nxt[j]->arr.push_back(i); 
     }
-
-    // Sort again every child node that
-    // has more than one number
     for (int i = 0; i < 10; i++) {
 
         // If root->next is NULL
@@ -67,18 +53,13 @@ void msd_sort(struct node* root, int exp, std::vector<unsigned int>& sorted_arr,
         }
 
         if (root->nxt[i]->arr.size() > 1) {
-            // Sort recursively
             msd_sort(root->nxt[i], exp / 10, sorted_arr, line);
         }
-
-            // If any node have only
-            // one number then it means
-            // the number is sorted
         else {
             sorted_arr.push_back(root->nxt[i]->arr.front());
         }
     }
-}
+} // Radix MSD Sort algorithm by: https://www.geeksforgeeks.org/msd-most-significant-digit-radix-sort/
 
 /*
 // Function to print an array
@@ -99,7 +80,7 @@ void RadixSorter::sequentialMSD(
   for(auto& i : lists){
     struct node* root = new_node();
     root->arr = i.get();
-    unsigned int exp = get_max_exp(root->arr);
+    unsigned int exp = maxExp(root->arr);
     std::vector<unsigned int> sorted_arr;
     msd_sort(root, exp, sorted_arr, exp);
     i.get() = sorted_arr;
@@ -138,7 +119,7 @@ void RadixSorter::embarrassinglyParallelMSD(
             for(int i = j; i < size; i = i + cores){
                 struct node* root = new_node();
                 root->arr = lists[i].get();
-                unsigned int exp = get_max_exp(root->arr);
+                unsigned int exp = maxExp(root->arr);
                 std::vector<unsigned int> sorted_arr;
                 msd_sort(root, exp, sorted_arr, exp);
                 lists[i].get() = sorted_arr;
@@ -168,7 +149,7 @@ void RadixSorter::trulyParallelMSD(
             for(int i = j; i < size; i = i + cores){
                 struct node* root = new_node();
                 root->arr = lists[i].get();
-                unsigned int exp = get_max_exp(root->arr);
+                unsigned int exp = maxExp(root->arr);
                 std::vector<unsigned int> sorted_arr;
                 msd_sort(root, exp, sorted_arr, exp);
                 lists[i].get() = sorted_arr;
