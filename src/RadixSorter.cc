@@ -166,4 +166,21 @@ void RadixSorter::trulyParallelMSD(
   std::vector<std::reference_wrapper<std::vector<unsigned int>>> &lists, 
   unsigned int cores) 
 { 
+    std::mutex m;
+    std::vector<std::thread> parallel;
+    for(auto& i : lists){
+
+        parallel.push_back(std::thread([&]{
+            struct node* root = new_node();
+            root->arr = i.get();
+            unsigned int exp = get_max_exp(root->arr);
+            std::vector<unsigned int> sorted_arr;
+            msd_sort(root, exp, sorted_arr, exp);
+            i.get() = sorted_arr;
+        }));
+    }
+
+    for(auto& j : parallel){
+        j.join();
+    }
 }
