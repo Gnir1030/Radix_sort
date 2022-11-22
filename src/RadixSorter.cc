@@ -147,31 +147,29 @@ void RadixSorter::embarrassinglyParallelMSD(
 
     }
 */
- std::mutex m;
  int size = lists.size();
     std::vector<std::thread> parallel;
     for(unsigned int j = 0; j < cores; j++){
         //std::cerr << i << std::endl;
-        int i = j;
         parallel.push_back(std::thread([&]{
-            while(i < size){
+            for(int i = j; i < size; i = i + cores){
                 struct node* root = new_node();
                 root->arr = lists[i].get();
                 unsigned int exp = get_max_exp(root->arr);
                 std::vector<unsigned int> sorted_arr;
                 msd_sort(root, exp, sorted_arr, exp);
                 lists[i].get() = sorted_arr;
-                m.lock();
-                i = i + cores;
-                m.unlock();
             }
         }));
+        parallel[j].join();
 
     }
+    /*
     //std::cerr << parallel.size() << "!" << std::endl;
     for(auto& k : parallel){
         k.join();
     }
+    */
 
 
 }
